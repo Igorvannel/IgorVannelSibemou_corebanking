@@ -8,7 +8,6 @@ import com.banking.IgorVannelSibemou_corebanking.dto.resquest.OperationRequestDt
 import com.banking.IgorVannelSibemou_corebanking.service.OperationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,11 +16,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/operations")
-@RequiredArgsConstructor
 @Tag(name = "Operation API", description = "API pour la gestion des opérations bancaires")
 public class OperationController {
 
     private final OperationService operationService;
+
+    public OperationController(OperationService operationService) {
+        this.operationService = operationService;
+    }
 
     @PostMapping("/credit")
     @Operation(summary = "Créditer un compte")

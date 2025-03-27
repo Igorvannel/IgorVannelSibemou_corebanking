@@ -21,10 +21,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
 public class OperationServiceImpl implements OperationService {
 
     private final OperationRepository operationRepository;
+
+    public OperationServiceImpl(OperationRepository operationRepository, AccountRepository accountRepository) {
+        this.operationRepository = operationRepository;
+        this.accountRepository = accountRepository;
+    }
+
     private final AccountRepository accountRepository;
 
     @Override

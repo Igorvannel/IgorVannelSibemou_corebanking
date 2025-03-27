@@ -4,7 +4,6 @@ import com.banking.IgorVannelSibemou_corebanking.dto.AccountDto;
 import com.banking.IgorVannelSibemou_corebanking.service.AccountService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,11 +13,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/accounts")
-@RequiredArgsConstructor
 @Tag(name = "Account API", description = "API pour la gestion des comptes bancaires")
 public class AccountController {
 
     private final AccountService accountService;
+
+    public AccountController(AccountService accountService) {
+        this.accountService = accountService;
+    }
 
     @PostMapping
     @Operation(summary = "Créer un nouveau compte")

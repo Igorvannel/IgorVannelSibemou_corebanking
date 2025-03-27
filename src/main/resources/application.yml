@@ -2,8 +2,8 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/core_banking
-    username: banking
-    password: banking
+    username: root
+    password: root
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
