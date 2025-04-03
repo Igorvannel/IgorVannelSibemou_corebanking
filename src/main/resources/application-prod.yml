@@ -1,0 +1,47 @@
+server:
+  port: 8000
+  tomcat:
+    threads:
+      max: 200
+      min-spare: 10
+    max-connections: 10000
+
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:core_banking}
+    driver-class-name: org.postgresql.Driver
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 10
+      max-lifetime: 1800000
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+
+logging:
+  level:
+    root: WARN
+    com.banking.core: ERROR
+    org.springframework.web: ERROR
+  file:
+    path: /var/log/banking-app
+    name: ${logging.file.path}/application.log
+
+jwt:
+  secret: ${JWT_PROD_SECRET}
+  expiration: 86400000  # 24 heures
+  header: Authorization
+  prefix: 'Bearer '
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always

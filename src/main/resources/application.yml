@@ -1,27 +1,6 @@
-
 spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/core_banking
-    username: root
-    password: root
-    driver-class-name: org.postgresql.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-  output:
-    ansi:
-      enabled: always
+  application:
+    name: CoreBanbing
+  profiles:
+    active: local
 
-server:
-  port: 8080
-
-logging:
-  level:
-    com.banking.core: DEBUG
-    org.springframework.web: INFO
-    org.hibernate: INFO
